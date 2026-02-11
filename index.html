@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Admin</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#000,#2a2a2a);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-8px)}
+  50%{transform:translateX(8px)}
+  75%{transform:translateX(-8px)}
+  100%{transform:translateX(0)}
+}
+
+.card{
+  background:#0f0f0f;
+  padding:22px;
+  border-radius:16px;
+  width:90%;
+  max-width:360px;
+  text-align:center;
+  animation:fadeUp .6s ease;
+  box-shadow:0 0 40px #000;
+}
+
+.card.shake{
+  animation:shake .4s;
+  box-shadow:0 0 40px #fff;
+}
+
+/* JUDUL GLOW */
+.title-glow{
+  margin:0 0 14px;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#000; /* Warna utama hitam */
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 20px #fff; /* Efek bersinar putih */
+}
+
+/* VIDEO */
+.banner{
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:14px;
+  box-shadow:
+    0 0 12px rgba(255,255,255,.4),
+    inset 0 0 12px rgba(255,255,255,.6);
+}
+.banner video{
+  width:100%;
+  display:block;
+}
+
+/* TEXT */
+.subtitle{
+  font-size:13px;
+  color:#ccc;
+  letter-spacing:1px;
+  margin:14px 0;
+}
+
+/* INPUT */
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #555;
+  background:#000;
+  color:white;
+}
+input::placeholder{color:#aaa}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:14px;
+  border:none;
+  border-radius:8px;
+  background:#fff;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:12px;
+  color:#ffb3b3;
+  font-size:14px;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:99;
+}
+
+.loader{
+  width:60px;
+  height:60px;
+  border:6px solid #333;
+  border-top:6px solid #fff;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="card" id="loginCard">
+
+  <!-- JUDUL DI ATAS VIDEO -->
+  <h1 class="title-glow">GOJOV1</h1>
+
+  <div class="banner">
+    <video src="banner1.mp4" autoplay muted loop playsinline></video>
+  </div>
+
+  <div class="subtitle">LOGIN FOR ACCESS</div>
+
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="login()">LOGIN</button>
+  <p id="error"></p>
+</div>
+
+<div class="popup" id="popup">
+  <div class="loader"></div>
+  <p>Checking access...</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
